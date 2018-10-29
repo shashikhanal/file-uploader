@@ -1,0 +1,94 @@
+{
+  "name": "file-uploader",
+  "version": "1.0.0",
+  "description": "File Uploader",
+  "scripts": {
+    "start": "node dist",
+    "prestart": "npm run build",
+    "lint": "eslint src test; exit 0",
+    "lint:fix": "eslint src test --fix; exit 0",
+    "codecov": "cat coverage/*/lcov.info | codecov",
+    "seed": "knex seed:run --knexfile src/knexfile.js",
+    "build": "rimraf dist && babel src -D --out-dir dist",
+    "format:md": "prettier --parser markdown --write '*.md'",
+    "format:yml": "prettier --parser yaml --single-quote --write '*.{yml,yaml}'",
+    "format:code": "prettier --single-quote --print-width 120 --write 'src/**/*.js' 'test/**/*.js'",
+    "start:dev": "nodemon --watch .env --watch src --exec babel-node src --source-maps",
+    "test": "cross-env NODE_ENV=test mocha --exit --recursive --require @babel/register test",
+    "test:coverage": "cross-env NODE_ENV=test nyc --require @babel/register --reporter lcov --reporter text mocha --exit --recursive test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --single-quote --print-width 120 --write 'src/**/*.js' 'test/**/*.js'",
+      "git add"
+    ],
+    "*.{yml,yml}": [
+      "prettier --single-quote --print-width 120 --write '*.{yml,yaml}'",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --parser markdown --write '*.md'",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "express",
+    "es6",
+    "api"
+  ],
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "boom": "^7.2.0",
+    "compression": "^1.7.3",
+    "cors": "^2.8.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "helmet": "^3.14.0",
+    "http-status-codes": "^1.1.6",
+    "joi": "^14.0.0",
+    "lodash": "^4.17.11",
+    "morgan": "^1.9.1",
+    "pg": "^7.5.0",
+    "raven": "^2.6.4",
+    "serve-favicon": "^2.5.0",
+    "swagger-jsdoc": "^3.2.3",
+    "swagger-ui-dist": "^3.19.4",
+    "winston": "^3.1.0",
+    "winston-daily-rotate-file": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "codecov": "^3.1.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.7.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "nyc": "^13.1.0",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.1",
+    "supertest": "^3.3.0"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.5.1"
+  }
+}
