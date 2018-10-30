@@ -1,0 +1,10 @@
+version: '3'
+services:
+  file-uploader:
+    build: .
+    volumes:
+      - .env.docker:/app/.env
+    ports:
+      - '8081:8081'
+    entrypoint: /bin/sh
+    command: -c "sleep 5 && yarn start:dev"
