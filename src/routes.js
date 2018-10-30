@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import swaggerSpec from './utils/swagger';
+import uploadFileController from './controllers/uploadFileController';
 
 /**
  * Contains all API routes for the application.
@@ -22,5 +23,7 @@ router.get('/', (req, res) => {
     apiVersion: req.app.locals.version
   });
 });
+
+router.use('/images', uploadFileController);
 
 export default router;
