@@ -11,6 +11,8 @@ const TYPE_JPEG = 'image/jpeg';
  */
 function fileTypeValidator(req, res, next) {
   if (req.file.mimetype === TYPE_JPG || req.file.mimetype === TYPE_JPEG) {
+    req.taskDone = true;
+
     return next();
   }
 
