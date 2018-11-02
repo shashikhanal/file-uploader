@@ -74,6 +74,10 @@ Run tests with coverage.
 
     $ yarn test:coverage
 
+## API Documentation
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e1e32d5398a5ee0465ef)
+
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
