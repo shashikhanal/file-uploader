@@ -76,7 +76,7 @@ Run tests with coverage.
 
 ## API Documentation
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e1e32d5398a5ee0465ef)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e1e32d5398a5ee0465ef#?env%5Bzegal%5D=W3sia2V5IjoiYmFzZS11cmwiLCJ2YWx1ZSI6Imh0dHA6Ly8xMjcuMC4wLjE6ODA4MSIsImRlc2NyaXB0aW9uIjoiIiwidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlfV0=)
 
 ## License
 
