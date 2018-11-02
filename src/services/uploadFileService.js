@@ -1,11 +1,10 @@
-import Boom from 'boom';
 import fs from 'fs';
 
 const IMAGE_FORMAT = `.webp`;
 
-export async function uploadFile(req) {
+export async function uploadFile(req, fileName) {
   let tmpPath = req.file.path;
-  let targetPath = 'public/images/' + req.get('x-test') + IMAGE_FORMAT;
+  let targetPath = 'public/images/' + fileName + IMAGE_FORMAT;
 
   let src = fs.createReadStream(tmpPath);
   let dest = fs.createWriteStream(targetPath);
@@ -15,7 +14,7 @@ export async function uploadFile(req) {
   src.on('error', function() {
     hadError = true;
 
-    throw new Boom('Error uploading image.');
+    return false;
   });
 
   return src.on('end', function() {

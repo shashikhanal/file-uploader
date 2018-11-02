@@ -13,7 +13,8 @@ const router = Router();
  */
 router.post('/', fileHeaderValidator, upload.single('name'), fileTypeValidator, (req, res, next) => {
   try {
-    let response = uploadFileService.uploadFile(req);
+    const fileName = req.get('x-test');
+    let response = uploadFileService.uploadFile(req, fileName);
 
     if (response) {
       res.status(HttpStatus.OK).json({
@@ -22,6 +23,12 @@ router.post('/', fileHeaderValidator, upload.single('name'), fileTypeValidator, 
         message: req.file.originalname + ' is uploaded successfully.'
       });
     }
+
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+      status: HttpStatus.INTERNAL_SERVER_ERROR,
+      success: false,
+      message: req.file.originalname + ' is not uploaded. Please, try again!'
+    });
   } catch (err) {
     next(err);
   }
