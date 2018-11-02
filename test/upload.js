@@ -1,10 +1,10 @@
 process.env.NODE_ENV = 'test';
 
-const expect = require('chai').expect;
-const httpMocks = require('node-mocks-http');
 import { fileTypeValidator } from '../src/validators/fileTypeValidator';
 import { fileHeaderValidator } from '../src/validators/fileHeaderValidator';
 
+const expect = require('chai').expect;
+const httpMocks = require('node-mocks-http');
 let request = {},
   response = {};
 

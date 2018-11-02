@@ -3,7 +3,7 @@ import HttpStatus from 'http-status-codes';
 import * as uploadFileService from '../services/uploadFileService';
 import { fileHeaderValidator } from '../validators/fileHeaderValidator';
 import { fileTypeValidator } from '../validators/fileTypeValidator';
-let multer = require('multer');
+import multer from 'multer';
 let upload = multer({ dest: 'public/images/' });
 
 const router = Router();

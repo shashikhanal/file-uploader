@@ -1,5 +1,5 @@
 import Boom from 'boom';
-let fs = require('fs');
+import fs from 'fs';
 
 const IMAGE_FORMAT = `.webp`;
 
