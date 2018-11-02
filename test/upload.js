@@ -109,13 +109,13 @@ describe('errorHandler', function() {
  * Unit test for file upload
  */
 describe('File upload', function() {
-  let filePath = 'public/images/testName.webp';
+  let filePath = 'public/testName.webp';
   let fileName = 'testName';
   let req = {};
   before(function() {
     req = {
       file: {
-        path: 'public/images/test.jpg',
+        path: 'public/test.jpg',
         content: Buffer.from([8, 6, 7, 5, 3, 0, 9])
       }
     };

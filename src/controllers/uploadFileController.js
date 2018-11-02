@@ -4,7 +4,7 @@ import * as uploadFileService from '../services/uploadFileService';
 import { fileHeaderValidator } from '../validators/fileHeaderValidator';
 import { fileTypeValidator } from '../validators/fileTypeValidator';
 import multer from 'multer';
-let upload = multer({ dest: 'public/images/' });
+let upload = multer({ dest: 'public/' });
 
 const router = Router();
 

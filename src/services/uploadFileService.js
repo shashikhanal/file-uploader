@@ -4,7 +4,7 @@ const IMAGE_FORMAT = `.webp`;
 
 export async function uploadFile(req, fileName) {
   let tmpPath = req.file.path;
-  let targetPath = 'public/images/' + fileName + IMAGE_FORMAT;
+  let targetPath = 'public/' + fileName + IMAGE_FORMAT;
 
   let src = fs.createReadStream(tmpPath);
   let dest = fs.createWriteStream(targetPath);
