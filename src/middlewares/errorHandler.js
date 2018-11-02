@@ -24,13 +24,15 @@ export function notFound(req, res) {
  * @param {Object} req
  * @param {Object} res
  */
-export function methodNotAllowed(req, res) {
-  res.status(HttpStatus.METHOD_NOT_ALLOWED).json({
+export async function methodNotAllowed(req, res) {
+  res = await {
     error: {
       code: HttpStatus.METHOD_NOT_ALLOWED,
       message: HttpStatus.getStatusText(HttpStatus.METHOD_NOT_ALLOWED)
     }
-  });
+  };
+
+  return res;
 }
 
 /**

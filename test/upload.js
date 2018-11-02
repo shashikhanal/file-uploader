@@ -2,6 +2,7 @@ process.env.NODE_ENV = 'test';
 
 import { fileTypeValidator } from '../src/validators/fileTypeValidator';
 import { fileHeaderValidator } from '../src/validators/fileHeaderValidator';
+import * as errorHandler from '../src/middlewares/errorHandler';
 
 const expect = require('chai').expect;
 const httpMocks = require('node-mocks-http');
@@ -67,6 +68,32 @@ describe('File header validator', function() {
   it(`should only allow request which has 'x-test' header`, function(done) {
     fileHeaderValidator(request, response, function next() {
       expect(request.taskDone).to.be.true;
+      done();
+    });
+  });
+});
+
+describe('errorHandler', function() {
+  before(function(done) {
+    request = httpMocks.createRequest({
+      method: 'GET',
+      url: '/'
+    });
+    response = httpMocks.createResponse();
+
+    done();
+  });
+
+  it(`should set 405 status code for METHOD_NOT_ALLOWED`, function(done) {
+    errorHandler.methodNotAllowed(request, response).then(res => {
+      expect(res.error.code).to.be.equal(405);
+      done();
+    });
+  });
+
+  it(`should have correct error message for METHOD_NOT_ALLOWED`, function(done) {
+    errorHandler.methodNotAllowed(request, response).then(res => {
+      expect(res.error.message).to.be.equal('Method Not Allowed');
       done();
     });
   });
